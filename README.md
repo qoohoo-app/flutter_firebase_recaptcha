@@ -1,9 +1,5 @@
 # Flutter Firebase Recaptcha Widget
 
-flutter_firebase_recaptcha provides a FirebaseRecaptcha widget for creating a reCAPTCHA verifier and using that with your Firebase Phone authentication workflow.
-
-# flutter_firebase_recaptcha
-
 reCAPTCHA widget for Firebase phone authentication 📱
 
 # Installation
@@ -11,7 +7,7 @@ reCAPTCHA widget for Firebase phone authentication 📱
 ### Add the package to your pubspec.yaml file
 
 ```
-flutter pub add flutter_inappwebview
+flutter pub add flutter_firebase_recaptcha
 ```
 # Basic usage
 
