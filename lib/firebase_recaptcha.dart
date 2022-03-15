@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
+// ignore: must_be_immutable
 class FirebaseRecaptcha extends StatelessWidget {
   Map<String, String> firebaseConfig;
   String firebaseVersion;
@@ -15,8 +16,7 @@ class FirebaseRecaptcha extends StatelessWidget {
   Function(String token) onVerify;
   Function? onFullChallenge;
   bool invisible;
-
-  final InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
+  InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
     crossPlatform: InAppWebViewOptions(javaScriptEnabled: true),
     android: AndroidInAppWebViewOptions(
       useHybridComposition: true,
