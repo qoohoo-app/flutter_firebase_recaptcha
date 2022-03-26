@@ -1,6 +1,6 @@
 name: flutter_firebase_recaptcha
-description: reCAPTCHA widget for Firebase phone authentication
-version: 1.0.1
+description: provides a set of building blocks for creating a reCAPTCHA verifier and using that with your Firebase Phone authentication workflow
+version: 1.0.2
 homepage: https://github.com/psokolnikov/flutter_firebase_recaptcha
 
 environment:
