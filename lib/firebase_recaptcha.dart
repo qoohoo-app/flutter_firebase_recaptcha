@@ -27,14 +27,13 @@ class FirebaseRecaptcha extends StatelessWidget {
     required this.onVerify,
     this.onFullChallenge,
     this.invisible = false,
-  })
-  {
+  }) {
     options = InAppWebViewGroupOptions(
-    crossPlatform: InAppWebViewOptions(javaScriptEnabled: true),
-    android: AndroidInAppWebViewOptions(
-      useHybridComposition: true,
-    ),
-  );
+      crossPlatform: InAppWebViewOptions(javaScriptEnabled: true),
+      android: AndroidInAppWebViewOptions(
+        useHybridComposition: true,
+      ),
+    );
   }
 
   String? get authDomain {
@@ -57,8 +56,11 @@ class FirebaseRecaptcha extends StatelessWidget {
       ${invisible ? 'padding: 0; margin: 0;' : ''}
     }
     #recaptcha-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-      height: 100%;
+      height: 400px;
       padding: 0;
       margin: 0;
       border: 0;
@@ -133,18 +135,11 @@ class FirebaseRecaptcha extends StatelessWidget {
       ),
       initialOptions: options,
       onWebViewCreated: (controller) {
+        controller.addJavaScriptHandler(handlerName: 'verifyHandler', callback: (args) => onVerify(args[0]));
+        controller.addJavaScriptHandler(handlerName: 'loadHandler', callback: (args) => onLoad?.call());
+        controller.addJavaScriptHandler(handlerName: 'errorHandler', callback: (args) => onError?.call());
         controller.addJavaScriptHandler(
-            handlerName: 'verifyHandler',
-            callback: (args) => onVerify(args[0]));
-        controller.addJavaScriptHandler(
-            handlerName: 'loadHandler',
-            callback: (args) => onLoad?.call());
-        controller.addJavaScriptHandler(
-            handlerName: 'errorHandler',
-            callback: (args) => onError?.call());
-        controller.addJavaScriptHandler(
-            handlerName: 'fullChallengeHandler',
-            callback: (args) => onFullChallenge?.call());
+            handlerName: 'fullChallengeHandler', callback: (args) => onFullChallenge?.call());
       },
     );
   }
